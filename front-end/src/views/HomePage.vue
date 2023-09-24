@@ -8,7 +8,7 @@
       <v-col cols="10">
         <div style="position: relative;">
         <v-img :src="coverImage" cover height="100%"></v-img>
-        <v-btn class="centered-btn" style="z-index: 1;">My Button</v-btn>
+        <v-btn @click="goToProducts" class="centered-btn" style="z-index: 1;">New Arrivals</v-btn>
         </div>
       </v-col>
     </v-row>
@@ -20,10 +20,15 @@
     data() {
       return {
         coverImage: require('@/assets/cover.jpg')
+      };
+    },
+      methods: {
+      goToProducts() {
+        this.$router.push({name:'Products'});
       }
-    }
-  }
-  </script>
+    }  
+}
+</script>
   
 
 <style scoped>

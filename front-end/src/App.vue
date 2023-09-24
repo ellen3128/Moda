@@ -9,6 +9,7 @@
 </template>
 
 <style>
+/* not scoped because this is a global styling  */
   * {
     box-sizing: border-box;
     font-family: Arial;

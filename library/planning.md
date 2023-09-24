@@ -10,19 +10,19 @@
 ### Wireframe Images 
 
 Home Page: 
-![Home Page](/library/home.png)
+![Home Page](../assets/home.png)
 
 Products Page: 
-![Products Page](/library/products.png)
+![Products Page](../assets/products.png)
 
 Product Details Page: 
-![Details Page](/library/details.png)
+![Details Page](../assets/details.png)
 
 Cart Page: 
-![Cart Page](/library/cart.png)
+![Cart Page](../assets/cart.png)
 
 Wish List Page: 
-![Wish-list Page](/library/wishlist.png)
+![Wish-list Page](../assets/wishlist.png)
 
 ### User Stories 
 | No. | Description | Priority |

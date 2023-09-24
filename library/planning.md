@@ -49,7 +49,7 @@ Wish List Page:
 
 ### ERD (Entity Relationship Diagram) 
  
-![ERD](../assets/erd.jpeg
+![ERD](../assets/erd.png)
 )
 
 ## CRUD chart

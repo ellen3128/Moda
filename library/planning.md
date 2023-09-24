@@ -42,6 +42,16 @@ Wish List Page:
 
 - Vue.js
 - Express.js
+- Node.js
 - MongoDB
 - Vuetify 
 - Stripe 
+
+### ERD (Entity Relationship Diagram) 
+ 
+![ERD](../assets/erd.jpeg
+)
+
+## CRUD chart
+
+![CRUD](../assets/crud.png)

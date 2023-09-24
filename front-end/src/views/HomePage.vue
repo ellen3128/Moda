@@ -1,15 +1,34 @@
 <template>
-    <h1> This is the Homepage </h1>
-</template>
-
-<script>
-export default {
+    <v-row>
+        <v-col cols="2">
+        <v-card-text>
+          Lorem ipsum...
+        </v-card-text>
+      </v-col>
+      <v-col cols="10">
+        <v-img :src="coverImage" cover height="100%"></v-img>
+      </v-col>
+    </v-row>
+  </template>
+  
+  <script>
+  export default {
     name: 'HomePage',
-}
-</script>
+    data() {
+      return {
+        coverImage: require('@/assets/cover.jpg')
+      }
+    }
+  }
+  </script>
+  
 
 <style scoped>
 h1 {
     color: lightblue;
+}
+
+.color {
+    background-color: blue;
 }
 </style>

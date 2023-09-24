@@ -1,15 +1,15 @@
 # E-Commerce Application 
 - Full-stack e-commerce application that allows users to browse, search and purchase products online 
 
-## Screenshot 🔗
+## Screenshot 
 
-## Technologies Used 🔗
+## Technologies Used 
 
-## Getting Started 🔗
+## Getting Started 
 
-## Acknowledgements 🔗
+## Acknowledgements 
 
-## License 🔗
+## License 
 
-## Future Features 🔗 
+## Future Features 
 

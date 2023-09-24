@@ -1,5 +1,5 @@
 # E-Commerce Application 
-- Full-stack e-commerce application that allows users to browse, search and purchase products online 
+- MODA is a web-based e-commerce application that showcases and sells trendy clothes and accessories
 
 ## Screenshot 
 

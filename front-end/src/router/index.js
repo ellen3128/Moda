@@ -4,6 +4,7 @@ import CartPage from '../views/CartPage'
 import ProductDetailPage from '../views/ProductDetailPage'
 import ProductsPage from '../views/ProductsPage'
 import HomePage from '../views/HomePage'
+import NotFoundPage from '../views/NotFoundPage'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [
   path: '/home',
   name: 'Home',
   component: HomePage,
+}, {
+  path: '*',
+  name: '404 Page',
+  component: NotFoundPage,
 }
 ]
 

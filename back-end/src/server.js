@@ -184,6 +184,30 @@ app.post("/api/users/:userId/cart", async (req, res) => {
   client.close();
 })
 
+app.delete("/api/users/:userId/cart/:productId", async (req, res) => {
+  const { userId, productId } = req.params;
+  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/", {
+
+  });
+  const db = client.db("vue-db");
+
+  await db.collection("users").updateOne(
+    { id: userId },
+    {
+      $pull: { cartItems: productId },
+    }
+  );
+  const user = await db.collection("users").findOne({ id: userId });
+  const products = await db.collection("products").find({}).toArray();
+  const cartItemIds = user.cartItems;
+  const cartItems = cartItemIds.map((id) =>
+    products.find((product) => product.id === id)
+  );
+
+  res.status(200).json(cartItems);
+  client.close();
+});
+
 
 
 app.listen(8000, () => {

@@ -7,6 +7,7 @@ import path from 'path';
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname,'../assets')));

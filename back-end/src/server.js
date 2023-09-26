@@ -161,6 +161,31 @@ app.get("/api/products/:productId", async (req, res) => {
   client.close();
 });
 
+app.post("/api/users/:userId/cart", async (req, res) => {
+  const { userId } = req.params;
+  const { productId } = req.body;
+  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/", {
+
+  });
+  const db = client.db("vue-db");
+  await db.collection("users").updateOne(
+    { id: userId },
+    {
+      $addToSet: { cartItems: productId },
+    }
+  );
+  const user = await db.collection("users").findOne({ id: userId });
+  const products = await db.collection("products").find({}).toArray();
+  const cartItemIds = user.cartItems;
+  const cartItems = cartItemIds.map((id) =>
+    products.find((product) => product.id === id)
+  );
+  res.status(200).json(cartItems);
+  client.close();
+})
+
+
+
 app.listen(8000, () => {
   console.log("Server is listening on port 8000");
 });

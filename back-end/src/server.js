@@ -209,7 +209,6 @@ app.delete("/api/users/:userId/cart/:productId", async (req, res) => {
 });
 
 
-
 app.listen(8000, () => {
   console.log("Server is listening on port 8000");
 });

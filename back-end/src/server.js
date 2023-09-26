@@ -135,9 +135,8 @@ app.get("/api/products", async (req, res) => {
 
 app.get("/api/users/:userId/cart", async (req, res) => {
   const { userId } = req.params; 
-  const client = await MongoClient.connect(
-    "mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/"
-  );
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
   const db = client.db("vue-db");
   const user = await db.collection("users").findOne({ id: userId });
   if (!user) return res.status(404).json("Could not find user!");
@@ -152,8 +151,8 @@ app.get("/api/users/:userId/cart", async (req, res) => {
 
 app.get("/api/products/:productId", async (req, res) => {
   const { productId } = req.params;
-  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/", {
-  });
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
   const db = client.db("vue-db");
   const product = await db.collection("products").findOne({ id: productId });
   if (product) {
@@ -167,9 +166,8 @@ app.get("/api/products/:productId", async (req, res) => {
 app.post("/api/users/:userId/cart", async (req, res) => {
   const { userId } = req.params;
   const { productId } = req.body;
-  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/", {
-
-  });
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
   const db = client.db("vue-db");
   await db.collection("users").updateOne(
     { id: userId },
@@ -189,9 +187,8 @@ app.post("/api/users/:userId/cart", async (req, res) => {
 
 app.delete("/api/users/:userId/cart/:productId", async (req, res) => {
   const { userId, productId } = req.params;
-  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/", {
-
-  });
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
   const db = client.db("vue-db");
 
   await db.collection("users").updateOne(

@@ -2,7 +2,7 @@
     <v-row class="grid">
         <v-col cols="2">
         <v-card-text class="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium adipisci qui amet voluptatibus libero maxime distinctio aliquam, in quo corporis, est cumque eveniet debitis voluptates vitae. Expedita soluta distinctio quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum similique consequuntur optio iste corrupti perferendis. Mollitia exercitationem deleniti iusto quam vitae
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium adipisci qui amet voluptatibus libero maxime distinctio aliquam, in quo corporis, est cumque eveniet debitis voluptates vitae. Expedita soluta distinctio quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum similique consequuntur optio iste corrupti perferendis. Mollitia exercitationem deleniti iusto quam vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, debitis non exercitationem, dolorum quis placeat quisquam hic, quasi pariatur tempora accusamus voluptates mollitia sapiente consectetur eos. Perspiciatis, mollitia? Impedit, tenetur.
         </v-card-text>
       </v-col>
       <v-col cols="10">

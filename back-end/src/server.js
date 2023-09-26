@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { MongoClient } from 'mongodb';
 
 const products = [
   {
@@ -84,7 +85,7 @@ const products = [
     averageRating: "5.0",
   },
   {
-    id: "901",
+    id: "112",
     name: "Image10",
     price: "330.00",
     description:
@@ -93,7 +94,7 @@ const products = [
     averageRating: "5.0",
   },
   {
-    id: "789",
+    id: "223",
     name: "Image11",
     price: "230.00",
     description:
@@ -102,7 +103,7 @@ const products = [
     averageRating: "5.0",
   },
   {
-    id: "890",
+    id: "334",
     name: "Image12",
     price: "180.00",
     description:
@@ -118,8 +119,13 @@ const app = express();
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/products", (req, res) => {
+app.get("/api/products", async(req, res) => {
+  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/")
+  const db = client.db('vue-db');
+  console.log("Connected to MongoDB");
+  const products = await db.collection('products').find({}).toArray();
   res.status(200).json(products);
+  client.close();
 });
 
 app.get("/api/users/:userId/cart", (req, res) => {

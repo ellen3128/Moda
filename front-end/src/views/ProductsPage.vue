@@ -8,7 +8,7 @@
 import axios from 'axios';
 // import { products } from '../fake-data';
 import ProductsGrid from '../components/ProductsGrid.vue';
-
+ 
 export default {
   name: 'ProductsPage',
   components: {
@@ -34,4 +34,3 @@ export default {
   }
 };
 </script>
-

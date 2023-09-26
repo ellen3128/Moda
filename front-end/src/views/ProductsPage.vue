@@ -27,7 +27,7 @@ export default {
       const products = result.data;
       console.log("here: ", products);
       this.products = products;
-      console.log(this.products);
+      // console.log(this.products);
     } catch (error) {
       console.error("Error fetching products:", error);
     }

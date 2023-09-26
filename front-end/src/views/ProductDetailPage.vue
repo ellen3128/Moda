@@ -7,7 +7,10 @@
       <h1>{{ product.name }}</h1>
       <h3 id="price">${{ product.price }}</h3>
       <p>Average rating: {{ product.averageRating }}</p>
-      <button id="add-to-cart">Add to Cart</button>
+      <button 
+        id="add-to-cart"
+        v-on:click="addToCart"
+        >Add to Cart</button>
       <h4>Description</h4>
       <p>{{ product.description }}</p>
     </div>
@@ -28,6 +31,13 @@ export default {
       return {
         product: {},
       };
+    },
+    methods: {
+      async addToCart() {
+        await axios.post('/api/users/12345/cart', {
+          productId: this.$route.params.id,
+        });
+      }
     },
     async created() {
       const result = await axios.get(`/api/products/${this.$route.params.id}`)

@@ -1,6 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const products = [
   {
@@ -120,9 +123,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/products", async (req, res) => {
-  const client = await MongoClient.connect(
-    "mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/"
-  );
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
+
   const db = client.db("vue-db");
   console.log("Connected to MongoDB");
   const products = await db.collection("products").find({}).toArray();

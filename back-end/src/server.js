@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
 const products = [
   {
@@ -119,17 +119,32 @@ const app = express();
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/products", async(req, res) => {
-  const client = await MongoClient.connect("mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/")
-  const db = client.db('vue-db');
+app.get("/api/products", async (req, res) => {
+  const client = await MongoClient.connect(
+    "mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/"
+  );
+  const db = client.db("vue-db");
   console.log("Connected to MongoDB");
-  const products = await db.collection('products').find({}).toArray();
+  const products = await db.collection("products").find({}).toArray();
   res.status(200).json(products);
   client.close();
 });
 
-app.get("/api/users/:userId/cart", (req, res) => {
+app.get("/api/users/:userId/cart", async (req, res) => {
+  const { userId } = req.params; 
+  const client = await MongoClient.connect(
+    "mongodb+srv://ellen3128:Qkrgusdk3128@cluster0.gvlq0lv.mongodb.net/"
+  );
+  const db = client.db("vue-db");
+  const user = await db.collection("users").findOne({ id: userId });
+  if (!user) return res.status(404).json("Could not find user!");
+  const products = await db.collection("products").find({}).toArray();
+  const cartItemIds = user.cartItems;
+  const cartItems = cartItemIds.map((id) =>
+    products.find((product) => product.id === id)
+  );
   res.status(200).json(cartItems);
+  client.close();
 });
 
 app.get("/api/products/:productId", (req, res) => {

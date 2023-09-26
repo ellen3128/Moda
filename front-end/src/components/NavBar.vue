@@ -42,7 +42,7 @@
   
     #cart-link {
       position: absolute;
-      right: 16px;
+      right: 100px;
       top: 16px;
       color: black;
       font-weight: 700;
@@ -50,7 +50,7 @@
 
     #products-link {
       position: absolute;
-      right: 170px;
+      right: 280px;
       top: 16px;
       color: black;
       font-weight: 700;

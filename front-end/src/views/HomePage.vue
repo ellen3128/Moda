@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <!-- Authentication controls -->
-    <div v-if="!$auth.loading" class="auth-controls">
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
-    </div>
+
 
     <v-row class="grid">
       <v-col cols="2">
@@ -25,7 +20,7 @@
         </div>
       </v-col>
     </v-row>
-  </div>
+
 </template>
   
 <script>
@@ -37,14 +32,6 @@ export default {
     };
   },
   methods: {
-    login() {
-      this.$auth.loginWithRedirect(); // or use loginWithPopup based on your preference
-    },
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin // Optional: specify a URL to redirect to after logout
-      });
-    },
     goToProducts() {
       this.$router.push({ name: 'Products' });
     }
@@ -73,9 +60,4 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-.auth-controls {
-  /* Your styles for the auth controls here, for example: */
-  position: absolute;
-  top: 16px;
-  right: 10px;
-}</style>
+</style>

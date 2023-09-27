@@ -5,6 +5,8 @@ import ProductDetailPage from '../views/ProductDetailPage'
 import ProductsPage from '../views/ProductsPage'
 import HomePage from '../views/HomePage'
 import NotFoundPage from '../views/NotFoundPage'
+import SuccessPage from '../views/SuccessPage'
+import ErrorPage from '../views/ErrorPage'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,14 @@ const routes = [
   path: '*',
   name: '404 Page',
   component: NotFoundPage,
+}, {
+  path: '/success',
+  name: 'Success',
+  component: SuccessPage,
+}, {
+  path: '/error',
+  name: 'Error',
+  component: ErrorPage,
 }
 ]
 

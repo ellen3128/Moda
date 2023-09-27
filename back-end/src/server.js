@@ -98,6 +98,24 @@ app.delete("/api/users/:userId/cart/:productId", async (req, res) => {
   client.close();
 });
 
+app.post("/api/users/:userId/cart/empty", async (req, res) => {
+  const { userId } = req.params;
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
+  const db = client.db("vue-db");
+  
+  // Empty the cartItems array for the user
+  await db.collection("users").updateOne(
+    { id: userId },
+    {
+      $set: { cartItems: [] },
+    }
+  );
+  
+  res.status(200).send({ message: 'Cart emptied successfully!' });
+  client.close();
+});
+
 
 app.listen(8000, () => {
   console.log("Server is listening on port 8000");

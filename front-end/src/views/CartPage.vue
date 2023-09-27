@@ -5,11 +5,22 @@
     v-on:remove-from-cart="removeFromCart($event)"
     />
     <h3 id="total-price">Total: ${{ totalPrice }}</h3>
-    <button id="checkout-button">Proceed to Checkout</button>
+    <stripe-checkout
+      ref="checkoutRef"
+      mode="payment"
+      :pk="publishablekey"
+      :line-items="lineItems"
+      :success-url="successUrl"
+      :cancel-url="cancelUrl"
+      @loading="v => loading = v"
+      />
+    <button id="checkout-button" @click="submit">Proceed to Checkout</button>
+    
   </div>
 </template>
 
 <script>
+import {StripeCheckout} from '@vue-stripe/vue-stripe'
 import axios from 'axios';
 import ProductsList from '../components/ProductsList.vue';
 
@@ -17,33 +28,48 @@ export default {
   name: 'CartPage',
   components: {
     ProductsList,
+    StripeCheckout,
   },
   data() {
     return {
       cartItems: [],
+      publishablekey: "pk_test_51NuxwCH60eFhhlLtQWU64j3Svb7B8k4VfEZGfTLucL5aI6kzYFjwMYWTa2Eb8lUTfnmGBIUjEo9idiEa16xMIdra00QTnMPgiY",
+      loading: false,
+      successUrl: 'http://localhost:8080/success',
+      cancelUrl: 'http://localhost:8080/error',
     }
   },
   computed: {
     totalPrice() {
       return this.cartItems.reduce(
         (sum, item) => sum + Number(item.price),
-        0,
+        0
       );
+    },
+    lineItems() {
+      return this.cartItems.map(item => ({
+        price: item.stripePriceId,  // assuming each cart item has a 'stripePriceId' property
+        quantity: item.quantity || 1  // assuming each cart item has a 'quantity' property, default to 1 if not present
+      }));
     }
   },
   methods: {
-    async removeFromCart (productId) {
+    async removeFromCart(productId) {
       const result = await axios.delete(`/api/users/12345/cart/${productId}`);
-      this.cartItems = result.data
+      this.cartItems = result.data;
+    },
+    submit() {
+      this.$refs.checkoutRef.redirectToCheckout();
     }
   },
   async created() {
-    const result = await axios.get('/api/users/12345/cart')
-    const cartItems = result.data;
-    this.cartItems = cartItems
-  },
+    const result = await axios.get('/api/users/12345/cart');
+    this.cartItems = result.data;
+  }
 };
 </script>
+
+
 <style scoped>
 h1 {
   border-bottom: 1px solid black;

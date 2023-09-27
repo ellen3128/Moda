@@ -1,0 +1,7 @@
+<template>
+    <div>
+      <h2>Payment Failed</h2>
+      <a href="/"> Try Again </a>
+    </div>
+  </template>
+  

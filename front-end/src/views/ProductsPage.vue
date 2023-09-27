@@ -1,20 +1,14 @@
-<!-- <template>
-  <div id="page-wrap">
-    <ProductsGrid :products="products" />
-  </div>
-</template> -->
-
 <template>
-  <div id="page-wrap">
+  <div>
+  <HighlightImage />
+  <!-- <div id="page-wrap"> -->
     <!-- Dropdown for category selection -->
     <div class="filter-section">
-      <label for="categoryFilter">Filter by Category:</label>
-      <select id="categoryFilter" v-model="selectedCategory" @change="filterProducts">
-        <option value="all">All</option>
-        <option value="Men">Men</option>
-        <option value="Women">Women</option>
-        <option value="Unisex">Unisex</option>
-      </select>
+      <label>By Category:</label>
+      <button @click="setCategory('all')">All</button>
+      <button @click="setCategory('Men')">Men</button>
+      <button @click="setCategory('Women')">Women</button>
+      <button @click="setCategory('Unisex')">Unisex</button>
     </div>
 
     <!-- Products Grid -->
@@ -27,16 +21,18 @@
 import axios from 'axios';
 // import { products } from '../fake-data';
 import ProductsGrid from '../components/ProductsGrid.vue';
+import HighlightImage from '../components/HighlightImage.vue';
  
 export default {
   name: 'ProductsPage',
   components: {
     ProductsGrid,
+    HighlightImage
   },
   // sending products as data
   data() {
     return {
-      products: [], 
+      allProducts: [], 
       filteredProducts: [],
       selectedCategory: 'all',
     };
@@ -57,6 +53,10 @@ export default {
       } else {
         this.filteredProducts = this.allProducts.filter(product => product.category === this.selectedCategory);
       }
+    },
+  setCategory(category) {
+      this.selectedCategory = category;
+      this.filterProducts();
     }
   },
   created() {
@@ -64,17 +64,29 @@ export default {
   }
 };
 </script>
-  <!-- // loading data, requests data from backend server
-//   async created() {
-//     try {
-//       const result = await axios.get('/api/products')
-//       const products = result.data;
-//       console.log("here: ", products);
-//       this.products = products;
-//       // console.log(this.products);
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//     }
-//   }
-// };
-// </script> -->
+
+<style scoped>
+.filter-section {
+  margin-bottom: 0rem;
+  padding: 0;
+  text-align: right;
+  margin-right: 50px;
+}
+
+button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+label {
+  font-weight: 600;
+}
+</style>

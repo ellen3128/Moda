@@ -48,8 +48,8 @@ export default {
     },
     lineItems() {
       return this.cartItems.map(item => ({
-        price: item.stripePriceId,  // assuming each cart item has a 'stripePriceId' property
-        quantity: item.quantity || 1  // assuming each cart item has a 'quantity' property, default to 1 if not present
+        price: item.stripePriceId,  
+        quantity: item.quantity || 1  
       }));
     }
   },
@@ -58,9 +58,17 @@ export default {
       const result = await axios.delete(`/api/users/12345/cart/${productId}`);
       this.cartItems = result.data;
     },
-    submit() {
-      this.$refs.checkoutRef.redirectToCheckout();
+    async submit() {
+      try {
+        await this.$refs.checkoutRef.redirectToCheckout();
+        this.emptyCart();
+    } catch (error) {
+      console.error('Error during checkout:', error);
     }
+  }
+  },async emptyCart() {
+      await axios.post('/api/users/12345/cart/empty');
+      this.cartItems = [];
   },
   async created() {
     const result = await axios.get('/api/users/12345/cart');

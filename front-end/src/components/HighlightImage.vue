@@ -33,7 +33,7 @@
 }
 
 .text {
-    margin-top: 3rem;
+    margin-top: 2rem;
     margin-left: -5rem;
     padding: 0rem;
 }

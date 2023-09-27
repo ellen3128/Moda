@@ -14,8 +14,9 @@
       :cancel-url="cancelUrl"
       @loading="v => loading = v"
       />
-    <button id="checkout-button" @click="submit">Proceed to Checkout</button>
-    
+       <!-- Conditionally render content based on authentication status -->
+    <button v-if="isAuthenticated" id="checkout-button" @click="submit">Proceed to Checkout</button>
+    <button v-else @click="login">Log in to Checkout</button>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import {StripeCheckout} from '@vue-stripe/vue-stripe'
 import axios from 'axios';
 import ProductsList from '../components/ProductsList.vue';
+import { getInstance } from '../auth/index';
 
 export default {
   name: 'CartPage',
@@ -50,8 +52,12 @@ export default {
       return this.cartItems.map(item => ({
         price: item.stripePriceId,  
         quantity: item.quantity || 1  
-      }));
-    }
+      }))
+    },
+      isAuthenticated() {
+      // Get authentication status from the Auth0 instance
+      return this.auth.isAuthenticated;
+    },
   },
   methods: {
     async removeFromCart(productId) {
@@ -65,17 +71,31 @@ export default {
     } catch (error) {
       console.error('Error during checkout:', error);
     }
-  }
-  },async emptyCart() {
+  },
+   async emptyCart() {
       await axios.post('/api/users/12345/cart/empty');
       this.cartItems = [];
   },
-  async created() {
-    const result = await axios.get('/api/users/12345/cart');
-    this.cartItems = result.data;
+  login() {
+      // Redirect user to login with Auth0
+      this.auth.loginWithRedirect();
+    },
+  },
+  created() {
+    this.auth = getInstance(); 
+    axios.get('/api/users/12345/cart').then(result => {
+      this.cartItems = result.data;
+    });
   }
 };
 </script>
+
+
+
+
+
+
+
 
 
 <style scoped>

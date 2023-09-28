@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
 const dotenv = require('dotenv');
 import path from 'path';
+import history from 'connect-history-api-fallback';
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname,'../assets')));
+app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
+app.use(history());
 
 app.get("/api/products", async (req, res) => {
   const MONGODB_URI = process.env.MONGODB_URI;
@@ -116,7 +119,10 @@ app.post("/api/users/:userId/cart/empty", async (req, res) => {
   client.close();
 });
 
+app.get('*',(req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+})
 
-app.listen(8000, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log("Server is listening on port 8000");
 });

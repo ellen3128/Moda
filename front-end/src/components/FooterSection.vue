@@ -53,6 +53,11 @@
   .link, h6 {
     color: white;
   }
+
+  .link {
+    font-size: 12px;
+    font-weight: bold;
+  }
   
   </style>
   

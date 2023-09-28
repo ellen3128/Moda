@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "dotenv": "^16.3.1"
+  },
+  "scripts": {
+    "start": "cd back-end/build/server.js && node build/server.js"
   }
 }

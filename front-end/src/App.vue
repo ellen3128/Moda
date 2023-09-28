@@ -33,10 +33,10 @@ export default {
   }
 
   button {
-    background-color: black;
+    /* background-color: black; */
     border: none;
-    border-radius: 8px;
-    color: white;
+    /* border-radius: 8px; */
+    /* color: black; */
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;

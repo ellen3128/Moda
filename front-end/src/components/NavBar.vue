@@ -72,6 +72,7 @@ export default {
   top: 16px;
   color: black;
   font-weight: 700;
+  background-color: none;
 }
 
 .auth-controls {

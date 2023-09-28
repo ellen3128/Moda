@@ -12,8 +12,9 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname,'../assets')));
-app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
 app.use(history());
+app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
+
 
 app.get("/api/products", async (req, res) => {
   const MONGODB_URI = process.env.MONGODB_URI;

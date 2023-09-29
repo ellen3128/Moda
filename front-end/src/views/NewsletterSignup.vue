@@ -56,6 +56,11 @@
   </script>
   
   <style scoped>
-  /* Add your component-specific styles here */
+
+  .form-group {
+    margin: 0 auto;
+
+  }
+
   </style>
   

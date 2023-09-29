@@ -121,6 +121,10 @@ app.post("/api/users/:userId/cart/empty", async (req, res) => {
 });
 
 app.post("/api/subscribe", async (req, res) => {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
+  const db = client.db("vue-db");
+  
   try {
     const { email } = req.body;
 
@@ -131,6 +135,8 @@ app.post("/api/subscribe", async (req, res) => {
   } catch (error) {
     console.error("Error subscribing to the newsletter:", error);
     res.status(500).json({ error: "Internal server error" });
+  } finally {
+    client.close();
   }
 });
 

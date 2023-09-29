@@ -17,11 +17,6 @@ app.use(_bodyParser["default"].urlencoded({
   extended: true
 }));
 app.use('/images', _express["default"]["static"](_path["default"].join(__dirname, '../assets')));
-app.use((0, _connectHistoryApiFallback["default"])());
-app.use(_express["default"]["static"](_path["default"].resolve(__dirname, '../dist'), {
-  maxAge: '1y',
-  etag: false
-}));
 app.get("/api/products", /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var MONGODB_URI, client, db, products;
@@ -315,6 +310,11 @@ app.post("/api/subscribe", /*#__PURE__*/function () {
     return _ref7.apply(this, arguments);
   };
 }());
+app.use((0, _connectHistoryApiFallback["default"])());
+app.use(_express["default"]["static"](_path["default"].resolve(__dirname, '../dist'), {
+  maxAge: '1y',
+  etag: false
+}));
 app.get('*', function (req, res) {
   res.sendFile(_path["default"].join(__dirname, '../dist/index.html'));
 });

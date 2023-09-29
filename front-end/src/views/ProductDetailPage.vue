@@ -25,6 +25,7 @@
       <h4>Description</h4>
       <p>{{ product.description }}</p>
     </div>
+    <SizeChart />
   </div>
   <NotFoundPage v-else />
 </template>
@@ -32,11 +33,13 @@
 <script>
 import axios from 'axios';
 import NotFoundPage from '../views/NotFoundPage.vue';
+import SizeChart from '../components/SizeChart.vue';
 
 export default {
     name: 'ProductDetailPage',
     components: {
-      NotFoundPage
+      SizeChart,
+      NotFoundPage,
     },
     data() {
       return {
@@ -109,4 +112,6 @@ export default {
   .grey-button {
     background-color: #888;
   }
+
+
 </style>

@@ -4,6 +4,7 @@
             v-for="product in products"
             v-on:remove-from-cart="$emit('remove-from-cart', $event)"
             v-on:update-cart="handleUpdateCart"
+            v-on:update-product-size="$emit('update-cart-size', $event)"
             :key="product.id"
             :product="product" />
     </div>

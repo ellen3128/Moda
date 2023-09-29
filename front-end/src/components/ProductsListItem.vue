@@ -4,7 +4,15 @@
       <div class="details-wrap">
         <h3>{{ product.name }}</h3>
         <p>${{ product.price }}</p>
-      </div>
+
+     <!-- Quantity Controls -->
+     <div class="quantity-controls">
+                <button @click="decreaseQuantity">-</button>
+                <input v-model.number="localQuantity" type="number" min="1" class="quantity-input">
+                <button @click="increaseQuantity">+</button>
+            </div>
+        </div>
+        
       <button 
       class="remove-button"
       v-on:click="$emit('remove-from-cart', product.id)"
@@ -16,6 +24,28 @@
 export default {
     name: 'ProductsListItem',
     props: ['product'],
+    data() {
+        return {
+            localQuantity: this.product.quantity || 1
+        }
+    },
+    watch: {
+        localQuantity(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                this.$emit('update-cart', { ...this.product, quantity: newVal });
+            }
+        }
+    },
+    methods: {
+        increaseQuantity() {
+            this.localQuantity += 1;
+        },
+        decreaseQuantity() {
+            if (this.localQuantity > 1) {
+                this.localQuantity -= 1;
+            }
+        }
+    }
 }
 </script>
 
@@ -43,4 +73,35 @@ export default {
     flex: 1;
     margin: auto;
   }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    background-color: #f5f5f5;
+    border: 1px solid #d1d1d1;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: #e6e6e6;
+}
+
+.quantity-controls input.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #d1d1d1;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+
 </style>

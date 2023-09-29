@@ -3,6 +3,7 @@
     <h1> Shopping Cart </h1>
     <ProductsList :products="cartItems" 
     v-on:remove-from-cart="removeFromCart($event)"
+    v-on:update-cart="updateCart($event)"
     />
     <h3 id="total-price">Total: ${{ totalPrice }}</h3>
     <stripe-checkout
@@ -35,14 +36,14 @@ export default {
       cartItems: [],
       publishablekey: "pk_test_51NuxwCH60eFhhlLtQWU64j3Svb7B8k4VfEZGfTLucL5aI6kzYFjwMYWTa2Eb8lUTfnmGBIUjEo9idiEa16xMIdra00QTnMPgiY",
       loading: false,
-      successUrl: 'http://localhost:8080/success',
-      cancelUrl: 'http://localhost:8080/error',
+      successUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/success',
+      cancelUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/error',
     }
   },
   computed: {
     totalPrice() {
       return this.cartItems.reduce(
-        (sum, item) => sum + Number(item.price),
+        (sum, item) => sum + Number(item.price) * (item.quantity || 1),
         0
       );
     },
@@ -65,10 +66,21 @@ export default {
     } catch (error) {
       console.error('Error during checkout:', error);
     }
-  }
-  },async emptyCart() {
+  },
+  async emptyCart() {
       await axios.post('/api/users/12345/cart/empty');
       this.cartItems = [];
+  },
+  async updateCart(updatedProduct) {
+     
+      await axios.put(`/api/users/12345/cart/${updatedProduct.id}`, { quantity: updatedProduct.quantity });
+      
+      // Then update the local cartItems to reflect the changes
+      const productIndex = this.cartItems.findIndex(p => p.id === updatedProduct.id);
+      if (productIndex !== -1) {
+        this.$set(this.cartItems, productIndex, updatedProduct);
+      }
+    }
   },
   async created() {
     const result = await axios.get('/api/users/12345/cart');

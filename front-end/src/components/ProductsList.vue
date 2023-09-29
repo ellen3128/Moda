@@ -3,6 +3,7 @@
         <ProductsListItem
             v-for="product in products"
             v-on:remove-from-cart="$emit('remove-from-cart', $event)"
+            v-on:update-cart="handleUpdateCart"
             :key="product.id"
             :product="product" />
     </div>
@@ -18,5 +19,14 @@ export default {
     components: {
         ProductsListItem,
     },
+    methods: {
+        handleUpdateCart(updatedProduct) {
+            // Find the product in the products list and update its quantity.
+            const productIndex = this.products.findIndex(p => p.id === updatedProduct.id);
+            if (productIndex !== -1) {
+                this.$set(this.products, productIndex, updatedProduct);
+            }
+        }
+    }
 }
 </script>

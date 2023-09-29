@@ -120,6 +120,26 @@ app.post("/api/users/:userId/cart/empty", async (req, res) => {
   client.close();
 });
 
+app.post("/api/subscribe", async (req, res) => {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
+  const db = client.db("vue-db");
+  
+  try {
+    const { email } = req.body;
+
+    // Store the email address in your database
+    await db.collection("subscribers").insertOne({ email });
+
+    res.status(200).json({ message: "Subscription successful!" });
+  } catch (error) {
+    console.error("Error subscribing to the newsletter:", error);
+    res.status(500).json({ error: "Internal server error" });
+  } finally {
+    client.close();
+  }
+});
+
 app.get('*',(req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 })

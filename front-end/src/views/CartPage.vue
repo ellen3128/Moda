@@ -36,8 +36,8 @@ export default {
       cartItems: [],
       publishablekey: "pk_test_51NuxwCH60eFhhlLtQWU64j3Svb7B8k4VfEZGfTLucL5aI6kzYFjwMYWTa2Eb8lUTfnmGBIUjEo9idiEa16xMIdra00QTnMPgiY",
       loading: false,
-      successUrl: 'http://localhost:8080/success',
-      cancelUrl: 'http://localhost:8080/error',
+      successUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/success',
+      cancelUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/error',
     }
   },
   computed: {

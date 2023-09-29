@@ -12,8 +12,8 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname,'../assets')));
-app.use(history());
-app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
+
+
 
 
 app.get("/api/products", async (req, res) => {
@@ -139,6 +139,9 @@ app.post("/api/subscribe", async (req, res) => {
     client.close();
   }
 });
+
+app.use(history());
+app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
 
 app.get('*',(req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));

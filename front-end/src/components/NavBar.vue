@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Authentication controls -->
-    <div v-if="!$auth.loading" class="auth-controls">
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+    <div v-if="!$auth.loading">
+      <button class="auth-controls" v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+      <button class="auth-controls" v-if="$auth.isAuthenticated" @click="logout">Log out</button>
     </div>
 
     <div id="nav-bar">

@@ -3,6 +3,7 @@
     <h1> Shopping Cart </h1>
     <ProductsList :products="cartItems" 
     v-on:remove-from-cart="removeFromCart($event)"
+    v-on:update-cart="updateCart($event)"
     />
     <h3 id="total-price">Total: ${{ totalPrice }}</h3>
     <stripe-checkout
@@ -42,7 +43,7 @@ export default {
   computed: {
     totalPrice() {
       return this.cartItems.reduce(
-        (sum, item) => sum + Number(item.price),
+        (sum, item) => sum + Number(item.price) * (item.quantity || 1),
         0
       );
     },
@@ -65,10 +66,21 @@ export default {
     } catch (error) {
       console.error('Error during checkout:', error);
     }
-  }
-  },async emptyCart() {
+  },
+  async emptyCart() {
       await axios.post('/api/users/12345/cart/empty');
       this.cartItems = [];
+  },
+  async updateCart(updatedProduct) {
+     
+      await axios.put(`/api/users/12345/cart/${updatedProduct.id}`, { quantity: updatedProduct.quantity });
+      
+      // Then update the local cartItems to reflect the changes
+      const productIndex = this.cartItems.findIndex(p => p.id === updatedProduct.id);
+      if (productIndex !== -1) {
+        this.$set(this.cartItems, productIndex, updatedProduct);
+      }
+    }
   },
   async created() {
     const result = await axios.get('/api/users/12345/cart');

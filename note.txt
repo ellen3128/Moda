@@ -1,7 +1,8 @@
+.travis.yml
+
 language: node_js
 node_js:
-  - "node"
-  - "lts/*"
+  - node
 
 services:
   - mongodb
@@ -18,3 +19,9 @@ install:
 script:
   - cd front-end && npm run test:unit && cd ..
   - cd back-end && npm test && cd ..
+
+deploy:
+  provider: heroku
+  app: moda-style
+  on: 
+    branch: main

@@ -12,5 +12,7 @@
 h1 {
     padding-top: 30vh;
     text-align: center;
+    height: 100vh;
 }
 </style>
+

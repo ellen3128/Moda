@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
 const dotenv = require('dotenv');
 import path from 'path';
+import history from 'connect-history-api-fallback';
 
 dotenv.config();
 
@@ -11,6 +12,9 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname,'../assets')));
+
+
+
 
 app.get("/api/products", async (req, res) => {
   const MONGODB_URI = process.env.MONGODB_URI;
@@ -116,7 +120,33 @@ app.post("/api/users/:userId/cart/empty", async (req, res) => {
   client.close();
 });
 
+app.post("/api/subscribe", async (req, res) => {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(MONGODB_URI);
+  const db = client.db("vue-db");
+  
+  try {
+    const { email } = req.body;
 
-app.listen(8000, () => {
+    // Store the email address in your database
+    await db.collection("subscribers").insertOne({ email });
+
+    res.status(200).json({ message: "Subscription successful!" });
+  } catch (error) {
+    console.error("Error subscribing to the newsletter:", error);
+    res.status(500).json({ error: "Internal server error" });
+  } finally {
+    client.close();
+  }
+});
+
+app.use(history());
+app.use(express.static(path.resolve(__dirname, '../dist'), { maxAge: '1y', etag: false }));
+
+app.get('*',(req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+})
+
+app.listen(process.env.PORT || 8000, () => {
   console.log("Server is listening on port 8000");
 });

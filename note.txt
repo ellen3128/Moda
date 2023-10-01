@@ -1,0 +1,27 @@
+.travis.yml
+
+language: node_js
+node_js:
+  - node
+
+services:
+  - mongodb
+
+cache:
+  directories:
+    - "front-end/node_modules"
+    - "back-end/node_modules"
+
+install:
+  - cd front-end && npm install && cd ..
+  - cd back-end && npm install && cd ..
+
+script:
+  - cd front-end && npm run test:unit && cd ..
+  - cd back-end && npm test && cd ..
+
+deploy:
+  provider: heroku
+  app: moda-style
+  on: 
+    branch: main

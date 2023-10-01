@@ -2,15 +2,18 @@
   <div id="app">
     <NavBar />
     <router-view/>
+    <FooterSection />
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
+import FooterSection from './components/FooterSection.vue';
 export default {
   name: 'App',
   components: {
     NavBar,
+    FooterSection,
   }
 }
 </script>
@@ -30,10 +33,10 @@ export default {
   }
 
   button {
-    background-color: black;
+    /* background-color: black; */
     border: none;
-    border-radius: 8px;
-    color: white;
+    /* border-radius: 8px; */
+    /* color: black; */
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;

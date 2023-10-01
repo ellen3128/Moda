@@ -49,9 +49,9 @@ export default {
   font-size: 12px;
 }
 
-.color {
+/* .color {
   background-color: blue;
-}
+} */
 
 .centered-btn {
   position: absolute;

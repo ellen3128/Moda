@@ -7,6 +7,8 @@ import HomePage from '../views/HomePage'
 import NotFoundPage from '../views/NotFoundPage'
 import SuccessPage from '../views/SuccessPage'
 import ErrorPage from '../views/ErrorPage'
+import NewsletterSignup from '../views/NewsletterSignup'
+import TermsConditions from '../views/TermsConditions'
 
 Vue.use(VueRouter)
 
@@ -43,6 +45,14 @@ const routes = [
   path: '/error',
   name: 'Error',
   component: ErrorPage,
+}, {
+  path: '/subscribe',
+  name: 'Subscribe',
+  component: NewsletterSignup,
+}, {
+  path: '/terms',
+  name: 'Terms',
+  component: TermsConditions,
 }
 ]
 

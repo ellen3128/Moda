@@ -1,0 +1,1 @@
+web: node ./back-end/build/server.js

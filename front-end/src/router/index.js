@@ -9,6 +9,7 @@ import SuccessPage from '../views/SuccessPage'
 import ErrorPage from '../views/ErrorPage'
 import NewsletterSignup from '../views/NewsletterSignup'
 import TermsConditions from '../views/TermsConditions'
+import PrivacyPolicy from '../views/PrivacyPolicy'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,10 @@ const routes = [
   path: '/terms',
   name: 'Terms',
   component: TermsConditions,
+}, {
+  path: '/privacy',
+  name: 'PrivacyPolicy',
+  component: PrivacyPolicy,
 }
 ]
 

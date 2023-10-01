@@ -63,88 +63,95 @@ export default {
 </script>
 
 <style scoped>
-  .product-container {
-    align-content: 'center';
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    padding: 16px;
-    width: 100%;
-  }
+.product-container {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  .product-image {
-    flex: 1;
-    height: 100px;
-    max-width: 100px;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
+}
 
-  .details-wrap {
-    padding: 0 16px;
-    flex: 3;
+.product-image {
+  flex: 1;
+  height: 120px;
+  max-width: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.details-wrap {
+  flex: 2;
+  padding: 0 24px;
+}
+
+.remove-button {
+  flex: 1;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 17px;
+  margin-left: 1rem;
+  margin-top: 10px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff4d4d;
   }
+}
 
-  .remove-button {
-    flex: 1;
-    margin: auto;
-  }
+.quantity-controls, .size-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
 
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
+.quantity-controls button, .size-controls select {
+  border: none;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover, .size-controls select:hover {
+  background-color: #e0e0e0;
 }
 
 .quantity-controls button {
-    background-color: #f5f5f5;
-    border: 1px solid #d1d1d1;
-    color: #333;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.quantity-controls button:hover {
-    background-color: #e6e6e6;
+  padding: 5px 12px;
+  margin: 0 5px;
 }
 
 .quantity-controls input.quantity-input {
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid #d1d1d1;
-    margin: 0 5px;
-    font-size: 14px;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  border: 1px solid #d1d1d1;
+  margin: 0 5px;
+  font-size: 15px;
 }
 
-.size-controls {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
+.size-controls label {
+  margin-right: 10px;
 }
 
-/* Container of the dropdown */
 .size-controls select {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 5px;
-    border: 1px solid #888;  /* dark border for better contrast */
-    appearance: none;
-    background-color: #f3f3f3; /* light gray background */
-    font-size: 14px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 15px;
 }
-
-/* Hover effect */
-.size-controls select:hover {
-    border-color: #555; /* darker border on hover */
-}
-
-/* Option styling */
-.size-controls option {
-    padding: 5px 10px;
-    background-color: #f7f7f7; /* light gray background for options */
-}
-
 
 </style>

@@ -41,8 +41,8 @@ export default {
       loading: false,
       // successUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/success',
       // cancelUrl: 'https://moda-style-2370e6c1be7a.herokuapp.com/error',
-      successUrl: 'https://localhost:8080/success',
-      cancelUrl: 'https://localhost:8080/error',
+      successUrl: 'http://localhost:8080/success',
+      cancelUrl: 'http://localhost:8080/error',
     }
   },
   computed: {
@@ -96,13 +96,6 @@ export default {
 </script>
 
 
-
-
-
-
-
-
-
 <style scoped>
 h1 {
   border-bottom: 1px solid black;
@@ -147,4 +140,6 @@ h1 {
   flex: 1;
   margin: auto;
 }
+
+
 </style>

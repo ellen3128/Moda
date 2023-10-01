@@ -40,7 +40,7 @@ export default {
   left: 0;
   right: 0;
   padding: 1.5rem 1.5rem;
-  background: rgba(255, 255, 255, 0.85);  
+  background: rgba(255, 255, 255, 0.85);  /* Semi-transparent background for legibility */
 }
 
 .product-name {

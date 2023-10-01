@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="form">
       <h2>Subscribe to Our Newsletter</h2>
       <form @submit.prevent="subscribe">
@@ -58,57 +58,80 @@
   </script>
 
 <style scoped>
+
+.container {
+  height: 100vh;
+}
 .form {
-  max-width: 400px;
-  margin: 15rem auto;
-  padding: 2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 10rem auto;
+  padding: 2.5rem;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 600;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
+  color: #666;
 }
 
 input[type="email"] {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   border: 1px solid #dcdcdc;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
 button[type="submit"] {
   background-color: #007BFF;
   color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px; 
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0,123,255,0.2);
 }
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
 }
 
 p {
-  color: red;
+  color: #d33;
+  font-weight: 500;
+  text-align: center;
 }
 
 p[v-if="subscribed"] {
-  color: green;
+  color: #28a745; 
 }
 </style>

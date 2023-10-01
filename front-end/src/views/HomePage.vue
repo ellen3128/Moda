@@ -4,13 +4,7 @@
     <v-row class="grid">
       <v-col cols="2">
         <v-card-text class="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium adipisci qui amet voluptatibus libero
-          maxime distinctio aliquam, in quo corporis, est cumque eveniet debitis voluptates vitae. Expedita soluta
-          distinctio quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum similique consequuntur
-          optio iste corrupti perferendis. Mollitia exercitationem deleniti iusto quam vitae. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Officiis, debitis non exercitationem, dolorum quis placeat quisquam hic, quasi
-          pariatur tempora accusamus voluptates mollitia sapiente consectetur eos. Perspiciatis, mollitia? Impedit,
-          tenetur.
+          "Fall 2023 emerges as a season of introspection and reconnection, echoing the global sentiment of unity and sustainability. In fashion, this translates to a harmonious blend of vintage revivals and cutting-edge innovations. Earthy tones, reminiscent of autumnal forests and early sunsets, dominate the palettes, while splashes of electric blues and neon oranges hint at the digital age's influence. Sustainable fabrics and upcycled materials are not just preferred but celebrated, as designers embrace both form and function. We're witnessing a rebirth of the classics too, with trench coats, turtlenecks, and tailored pants being reimagined with modern twists. Embroidered details, asymmetric cuts, and bold patterns lend an air of playful defiance. As the lines between workwear and leisurewear blur, comfort remains paramount. Dive into our curated collection and embody the essence of Fall 2023 - where tradition meets modernity, and fashion becomes a statement of purpose."
         </v-card-text>
       </v-col>
       <v-col cols="10">
@@ -43,6 +37,7 @@ export default {
 <style scoped>
 .grid {
   margin-top: 2rem;
+  height: 100vh;
 }
 
 .text {

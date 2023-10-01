@@ -1,19 +1,17 @@
 <template>
   <div>
-  <HighlightImage />
-  <!-- <div id="page-wrap"> -->
+    <HighlightImage />
+    <!-- <div id="page-wrap"> -->
     <!-- Dropdown for category selection -->
     <div class="filter-section">
-      <label>By Category:</label>
-      <button @click="setCategory('all')">All</button>
-      <button @click="setCategory('Men')">Men</button>
-      <button @click="setCategory('Women')">Women</button>
-      <button @click="setCategory('Unisex')">Unisex</button>
+      <button v-for="category in ['all', 'Men', 'Women', 'Unisex']" :key="category" @click="setCategory(category)"
+        :class="{ active: selectedCategory === category }">
+        {{ category }}
+      </button>
+      </div>
+      <!-- Products Grid -->
+      <ProductsGrid :products="filteredProducts" />
     </div>
-
-    <!-- Products Grid -->
-    <ProductsGrid :products="filteredProducts" />
-  </div>
 </template>
 
 
@@ -22,7 +20,7 @@ import axios from 'axios';
 // import { products } from '../fake-data';
 import ProductsGrid from '../components/ProductsGrid.vue';
 import HighlightImage from '../components/HighlightImage.vue';
- 
+
 export default {
   name: 'ProductsPage',
   components: {
@@ -32,11 +30,11 @@ export default {
   // sending products as data
   data() {
     return {
-      allProducts: [], 
+      allProducts: [],
       filteredProducts: [],
       selectedCategory: 'all',
     };
-  }, 
+  },
   methods: {
     async fetchProducts() {
       try {
@@ -54,7 +52,7 @@ export default {
         this.filteredProducts = this.allProducts.filter(product => product.category === this.selectedCategory);
       }
     },
-  setCategory(category) {
+    setCategory(category) {
       this.selectedCategory = category;
       this.filterProducts();
     }
@@ -67,26 +65,38 @@ export default {
 
 <style scoped>
 .filter-section {
-  margin-bottom: 0rem;
-  padding: 0;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1.5rem;
   margin-right: 50px;
 }
 
 button {
   margin: 0 5px;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border: none;
-  background-color: #eee;
+  border-radius: 5px;
+  background-color: #f2f2f2;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  color: #555;
 }
 
 button:hover {
-  background-color: #ddd;
+  background-color: #e1e1e1;
+  transform: translateY(-1px);
+}
+
+button.active {
+  background-color: #a7a9ac; /* This can be a shade that complements your site's theme */
+  color: #ffffff;
 }
 
 label {
   font-weight: 600;
+  margin-right: 10px;
 }
+
 </style>

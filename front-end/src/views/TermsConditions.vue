@@ -1,22 +1,43 @@
 <template>
     <main class="wrap">
-  <section class="container">
-    <div class="container_heading">
-      <h2>Terms & Conditions</h2>
-    </div>
-    <div class="container_content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. </p>
-      <p>Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>
-      <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. </p>
-      <p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. </p>
-      <p>Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. </p>
-    </div>
-    <div class="container_nav">
-      <small>By clicking 'Accept' you are agreeing to our terms and conditions.</small>
-      <a class="button" href="#" @click="showAcceptAlert">Accept</a>
-    </div>
-  </section>
-</main>
+        <section class="container">
+            <div class="container_heading">
+                <h2>Terms & Conditions</h2>
+            </div>
+            <div class="container_content">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing and using our website, you agree to comply with and be bound by these Terms and Conditions.
+                </p>
+                <h2>2. Use of the Website</h2>
+                <p>By using this website, you represent that you are at least the age of majority in your state or province
+                    of residence. Unauthorized use of this website may result in a claim for damages and/or be a criminal
+                    offense.</p>
+                <h2>3. Product & Pricing</h2>
+                <p>All products listed on the website are subject to availability, and we cannot guarantee that items will
+                    be in stock. We reserve the right to discontinue any product at any time. Prices are subject to change
+                    without notice.</p>
+                <h2>4. Return & Refund Policy</h2>
+                <p>We accept returns within 30 days of the original purchase date. Products must be returned in their
+                    original condition. For defective or damaged products, we offer a full refund or exchange.</p>
+                <h2>5. Liability</h2>
+                <p>We take no responsibility and assume no liability for any loss or damages incurred due to the use of this
+                    website or the products purchased from it.</p>
+                <h2>6. Governing Law</h2>
+                <p>Any disputes relating to these Terms & Conditions will be subject to the jurisdiction of the courts
+                    located within [Your City/State/Country].</p>
+                <h2>7. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms & Conditions at any time, so please review them frequently.
+                    Changes and clarifications will take effect immediately upon their posting on the website.</p>
+                <h2>8. Contact</h2>
+                <p>If you have any questions regarding these Terms & Conditions, you can contact us using the contact
+                    information provided at the bottom of this page.</p>
+            </div>
+            <div class="container_nav">
+                <small>By clicking 'Accept' you are agreeing to our terms and conditions.</small>
+                <a class="button" href="#" @click="showAcceptAlert">Accept</a>
+            </div>
+        </section>
+    </main>
 </template>
 
 <script>
@@ -34,7 +55,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Makes the content vertically centered */
+    height: 100vh;
+    /* Makes the content vertically centered */
     /* background-color: #f6f8fa; */
 }
 
@@ -90,5 +112,4 @@ h2 {
 .button:hover {
     background-color: #0056b3;
 }
-
 </style>

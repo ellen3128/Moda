@@ -20,16 +20,16 @@
       <div class="section">
         <h2>4. Contact</h2>
         <p>If you have any questions regarding this Privacy Policy, you can contact us using the contact information provided at the bottom of this page.</p>
-      </div>
+      </div> <br>
     </div>
   </template>
-
-<script>
-export default {
-  name: 'PrivacyPolicyPage'
-}
-</script>
   
+  <script>
+  export default {
+    name: 'PrivacyPolicyPage'
+  }
+  </script>
+
   <style scoped>
   .privacy-container {
     max-width: 800px;
@@ -38,7 +38,8 @@ export default {
     font-family: Arial, sans-serif;
     line-height: 1.5;
     color: #555;
-    height: 100vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
   }
   
   h1 {

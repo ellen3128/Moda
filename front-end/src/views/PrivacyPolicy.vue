@@ -1,4 +1,5 @@
 <template>
+  <div class="page">
     <div class="privacy-container">
       <h1>Privacy Policy</h1>
       <div class="section">
@@ -22,6 +23,7 @@
         <p>If you have any questions regarding this Privacy Policy, you can contact us using the contact information provided at the bottom of this page.</p>
       </div> <br>
     </div>
+  </div>
   </template>
   
   <script>
@@ -31,7 +33,10 @@
   </script>
 
   <style scoped>
-  .privacy-container {
+.page {
+  height: 100vh;
+}
+.privacy-container {
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;

@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9; /* light background for a clean look */
+  background-color: #f9f9f9; 
 }
 
 .error-content {
@@ -25,7 +25,7 @@
 }
 
 .error-content h2 {
-  color: #a00; /* slightly reddish color to indicate an error */
+  color: #a00;
   font-weight: 600;
   margin-bottom: 20px;
 }
@@ -37,7 +37,7 @@
 }
 
 .retry-btn {
-  background-color: #007bff; /* a different bright color for CTA to differentiate from success */
+  background-color: #007bff; 
   color: white;
   padding: 10px 20px;
   font-weight: 600;
@@ -47,6 +47,7 @@
 }
 
 .retry-btn:hover {
-  background-color: #0056b3; /* slightly darker color on hover */
+  background-color: #0056b3; 
 }
+
 </style>

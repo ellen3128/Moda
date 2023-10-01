@@ -29,7 +29,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9; /* light background for a clean look */
+  background-color: #f9f9f9;
 }
 
 .success-content {
@@ -53,7 +53,7 @@ export default {
 }
 
 .shop-more-btn {
-  background-color: #ff5a5f;  /* bright color for CTA */
+  background-color: #ff5a5f;  
   color: white;
   padding: 10px 20px;
   font-weight: 600;
@@ -63,7 +63,7 @@ export default {
 }
 
 .shop-more-btn:hover {
-  background-color: #ff3c48;  /* slightly darker color on hover */
+  background-color: #ff3c48;  
 }
 </style>
 

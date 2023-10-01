@@ -21,11 +21,12 @@
         id="add-to-cart"
         class="grey-button"
         v-if="itemIsInCart"
-        >Item is already in cart!</button>
-      <h4>Description</h4>
+        >Item is already in cart!</button><br>
+      <h4>Description</h4><br>
       <p>{{ product.description }}</p>
-    </div>
+  
     <SizeChart />
+  </div>
   </div>
   <NotFoundPage v-else />
 </template>
@@ -76,42 +77,95 @@ export default {
 </script>
 
 <style scoped>
+  /* General Page Styling */
   #page-wrap {
-    margin-top: 16px;
-    padding: 16px;
-    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 35px;
+    padding: 15px;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 24px;
   }
 
   #img-wrap {
-    text-align: center;
+    flex-basis: 45%;
+    margin-top: 75px;
+    /* padding: 10px; */
+    /* display: flex; */
+    /* justify-content: top; */
+    align-items: center;
   }
 
   img {
-    width: 400px;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
   }
 
+
   #product-details {
-    padding: 16px;
+    padding-top: 7rem;
+    flex-basis: 50%;
     position: relative;
   }
 
-  #add-to-cart {
-    width: 100%;
+  /* Heading Styling */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
   }
 
   #price {
-    position: absolute;
-    top: 24px;
-    right: 16px;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #282828;
+  }
+
+  h4 {
+    font-size: 1.2em;
+    margin-top: 16px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  /* Button Styling */
+  #add-to-cart {
+    display: block;
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 1em;
+    margin-top: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+
+  #add-to-cart:hover {
+    filter: brightness(0.95);
   }
 
   .green-button {
-    background-color: green;
+    background-color: #2ECC71;
+    color: #fff;
   }
 
   .grey-button {
-    background-color: #888;
+    background-color: #A9A9A9;
+    color: #fff;
+    font-weight: 600;
   }
 
-
+  p {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #000000;
+  }
 </style>

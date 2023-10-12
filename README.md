@@ -35,9 +35,7 @@
 
 ## Getting Started 
 
-- [Temporary App Link](https://moda-style-2370e6c1be7a.herokuapp.com/home) <br>
-
-  -❗Link to final version of the application to be updated
+- npm install
 
 ## Acknowledgements 
 
